@@ -10,6 +10,7 @@ plugins {
     id("com.jfrog.artifactory") version "4.21.0"
     id("biz.aQute.bnd.builder") version "5.3.0"
     id("com.vanniktech.maven.publish") version "0.14.2"
+    id("org.beryx.jar") version "1.2.0"
 }
 
 ext {
@@ -39,6 +40,7 @@ description = "RxJava: Reactive Extensions for the JVM – a library for composi
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+ext.javaCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     mavenCentral()
@@ -95,9 +97,10 @@ jar {
             "Import-Package": "!org.junit,!junit.framework,!org.mockito.*,!org.testng.*,*",
             "Bundle-DocURL": "https://github.com/ReactiveX/RxJava",
             "Eclipse-ExtensibleAPI": "true",
-            "Automatic-Module-Name": "io.reactivex.rxjava3",
             "Export-Package": "!io.reactivex.rxjava3.internal.*, io.reactivex.rxjava3.*"
     )
+
+    moduleInfoPath = 'src/main/module/module-info.java'
 }
 
 license {
